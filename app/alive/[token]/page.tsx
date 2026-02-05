@@ -65,7 +65,7 @@ export default function AlivePage() {
             </p>
             <Link
               href="/"
-              className="mt-6 inline-flex rounded-md border border-edge px-5 py-2 text-base font-semibold uppercase tracking-[0.25em]"
+              className="btn-outline mt-6 inline-flex rounded-md px-5 py-2 text-base font-semibold uppercase tracking-[0.25em]"
             >
               Go home
             </Link>

@@ -46,8 +46,8 @@ export default function DecryptPage() {
               onClick={() => setMode("paste")}
               className={`rounded-md px-3 py-1 ${
                 mode === "paste"
-                  ? "bg-ink text-white"
-                  : "border border-edge"
+                  ? "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
+                  : "btn-toggle bg-transparent"
               }`}
             >
               Paste ciphertext
@@ -56,7 +56,9 @@ export default function DecryptPage() {
               type="button"
               onClick={() => setMode("file")}
               className={`rounded-md px-3 py-1 ${
-                mode === "file" ? "bg-ink text-white" : "border border-edge"
+                mode === "file"
+                  ? "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
+                  : "btn-toggle bg-transparent"
               }`}
             >
               Upload file
@@ -110,12 +112,12 @@ export default function DecryptPage() {
                   value={output}
                   className="mt-4 min-h-[160px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
                 />
-                <button className="mt-4 rounded-md border border-edge px-4 py-2 text-base font-semibold uppercase tracking-[0.25em]">
+                <button className="btn-outline mt-4 rounded-md px-4 py-2 text-base font-semibold uppercase tracking-[0.25em]">
                   Copy
                 </button>
               </>
             ) : (
-              <button className="mt-6 rounded-md border border-edge px-5 py-3 text-base font-semibold uppercase tracking-[0.25em]">
+              <button className="btn-outline mt-6 rounded-md px-5 py-3 text-base font-semibold uppercase tracking-[0.25em]">
                 Download decrypted file
               </button>
             )}

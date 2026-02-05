@@ -76,7 +76,7 @@ export default function CreateDropPage() {
                   <span className="truncate font-mono text-base">
                     https://deaddrop.example/alive/placeholder-token
                   </span>
-                  <button className="rounded-md border border-edge px-3 py-1 text-base font-semibold">
+                  <button className="btn-outline rounded-md px-3 py-1 text-base font-semibold">
                     Copy
                   </button>
                 </div>
@@ -181,8 +181,8 @@ export default function CreateDropPage() {
                     onClick={() => setMode("text")}
                     className={`rounded-md px-3 py-1 ${
                       mode === "text"
-                        ? "bg-ink text-white"
-                        : "border border-edge"
+                        ? "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
+                        : "btn-toggle bg-transparent"
                     }`}
                   >
                     Text
@@ -192,8 +192,8 @@ export default function CreateDropPage() {
                     onClick={() => setMode("file")}
                     className={`rounded-md px-3 py-1 ${
                       mode === "file"
-                        ? "bg-ink text-white"
-                        : "border border-edge"
+                        ? "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
+                        : "btn-toggle bg-transparent"
                     }`}
                   >
                     File

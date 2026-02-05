@@ -18,14 +18,15 @@ const maskEmail = (value: string) => {
   return `${name.slice(0, 1)}***@${domain}`;
 };
 
-export default function ReceiptPage({
+export default async function ReceiptPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   // TODO: Fetch receipt from Supabase by id.
   const receipt: Receipt = {
-    id: params.id,
+    id,
     status: "ACTIVE",
     payloadHash:
       "a49e1b0f8e8d0b19b8d7e134e4f5c7c9a7c8b2a1d4f3e2b1c0d9e8f7a6b5c4d3",
@@ -62,7 +63,7 @@ export default function ReceiptPage({
               </span>
               <span className="flex items-center gap-2 font-mono text-base">
                 {receipt.payloadHash}
-                <button className="rounded-md border border-edge px-2 py-1 text-base font-semibold uppercase tracking-[0.2em]">
+                <button className="btn-outline rounded-md px-2 py-1 text-base font-semibold uppercase tracking-[0.2em]">
                   Copy
                 </button>
               </span>

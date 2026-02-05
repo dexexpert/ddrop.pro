@@ -66,6 +66,29 @@ body {
   color: #ffffff;
 }
 
+.btn-outline {
+  background: rgba(244, 242, 236, 0.08);
+  border: 1px solid var(--edge);
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  background: rgba(244, 242, 236, 0.14);
+}
+
+.btn-toggle {
+  border: 1px solid var(--edge);
+  color: var(--ink);
+}
+
+.btn-toggle-active {
+  background: rgba(244, 242, 236, 0.95);
+  color: #0f1116;
+  box-shadow:
+    0 0 0 2px rgba(0, 204, 193, 0.35),
+    0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
 .surface {
   background: rgba(18, 20, 26, 0.82);
   border: 1px solid var(--edge);

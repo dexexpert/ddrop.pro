@@ -4,15 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-edge bg-[rgba(244,242,236,0.92)] shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
-            <Image src="/logo.jpg" alt="DeadDrop logo" width={28} height={28} />
-          </div>
-          <span className="text-base font-semibold uppercase tracking-[0.4em]">
-            DEADDROP
-          </span>
-        </div>
+      <header className="mx-auto grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-6">
         <nav className="hidden items-center gap-6 text-base font-medium uppercase tracking-[0.2em] text-muted md:flex">
           <Link className="hover:text-ink" href="/create">
             Create
@@ -27,6 +19,43 @@ export default function Home() {
             Safety
           </Link>
         </nav>
+
+        <div className="flex items-center justify-center gap-3">
+          <Image src="/logo2.png" alt="DeadDrop logo" width={96} height={96} />
+          <span className="text-2xl font-semibold uppercase tracking-[0.25em]">
+            DEADDROP
+          </span>
+        </div>
+
+        <div className="hidden items-center justify-end gap-1 md:flex">
+          <a
+            href="https://dexscreener.com"
+            aria-label="Dexscreener"
+            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
+          >
+            <Image
+              src="/dexscreener.png"
+              alt="Dexscreener"
+              width={22}
+              height={22}
+            />
+          </a>
+          <a
+            href="https://x.com"
+            aria-label="X"
+            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              aria-hidden="true"
+              fill="currentColor"
+            >
+              <path d="M18.244 2H21l-6.575 7.51L22 22h-6.33l-4.956-6.4L5.1 22H2.33l7.05-8.05L2 2h6.49l4.48 5.8L18.244 2zm-1.11 18h1.78L7.73 4H5.83l11.304 16z" />
+            </svg>
+          </a>
+        </div>
       </header>
 
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-16">
@@ -53,7 +82,7 @@ export default function Home() {
               </Link>
               <a
                 href="#how"
-                className="rounded-md border border-edge px-6 py-3 text-base font-semibold uppercase tracking-[0.25em] text-ink transition hover:-translate-y-0.5 hover:bg-accent-ghost"
+                className="btn-outline rounded-md px-6 py-3 text-base font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-0.5"
               >
                 How it works
               </a>
@@ -76,7 +105,7 @@ export default function Home() {
                   className="flex items-center justify-between rounded-md border border-edge bg-[rgba(14,16,21,0.85)] px-4 py-3"
                 >
                   <span className="font-medium text-ink">{item}</span>
-                  <span className="text-base text-muted">\u2713</span>
+                  <span className="text-base text-muted">✓</span>
                 </div>
               ))}
             </div>
@@ -141,8 +170,37 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mx-auto w-full max-w-6xl px-6 pb-10 text-base text-muted">
-        Client-side encryption. No on-chain storage. No trading.
+      <footer className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 pb-10 text-base text-muted">
+        <span>Client-side encryption. No on-chain storage. No trading.</span>
+        <div className="flex items-center gap-1">
+          <a
+            href="https://dexscreener.com"
+            aria-label="Dexscreener"
+            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
+          >
+            <Image
+              src="/dexscreener.png"
+              alt="Dexscreener"
+              width={22}
+              height={22}
+            />
+          </a>
+          <a
+            href="https://x.com"
+            aria-label="X"
+            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              aria-hidden="true"
+              fill="currentColor"
+            >
+              <path d="M18.244 2H21l-6.575 7.51L22 22h-6.33l-4.956-6.4L5.1 22H2.33l7.05-8.05L2 2h6.49l4.48 5.8L18.244 2zm-1.11 18h1.78L7.73 4H5.83l11.304 16z" />
+            </svg>
+          </a>
+        </div>
       </footer>
     </div>
   );
