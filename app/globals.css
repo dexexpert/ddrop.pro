@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #0f1116;
+  --ink: #f4f2ec;
+  --muted: #b4b0a8;
+  --edge: #2a2d35;
+  --accent: #f4f2ec;
+  --accent-ghost: rgba(244, 242, 236, 0.08);
+  --accent-1: #00ccc1;
+  --accent-2: #8b58ff;
+  --accent-3: #ff2c2a;
+  --font-space: "Space Grotesk", system-ui, sans-serif;
+  --font-plex: "IBM Plex Mono", ui-monospace, SFMono-Regular, SFMono-Regular,
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+  --color-accent-ghost: var(--accent-ghost);
+  --font-sans: var(--font-space);
+  --font-mono: var(--font-plex);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(0, 204, 193, 0.14), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(139, 88, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255, 44, 42, 0.12), transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 45%);
+  color: var(--ink);
+  font-family: var(--font-space);
+  font-size: 18px;
+}
+
+::selection {
+  background: rgba(0, 204, 193, 0.25);
+}
+
+.glow-text {
+  text-shadow:
+    0 0 16px rgba(0, 204, 193, 0.45),
+    0 0 28px rgba(139, 88, 255, 0.35),
+    0 0 40px rgba(255, 44, 42, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  box-shadow:
+    0 10px 28px rgba(0, 204, 193, 0.25),
+    0 18px 40px rgba(139, 88, 255, 0.2);
+  color: #ffffff;
+}
+
+.surface {
+  background: rgba(18, 20, 26, 0.82);
+  border: 1px solid var(--edge);
+  backdrop-filter: blur(8px);
+}
+
+.surface-muted {
+  background: rgba(18, 20, 26, 0.5);
+  border: 1px solid var(--edge);
+}
