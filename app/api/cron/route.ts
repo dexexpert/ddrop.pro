@@ -14,7 +14,7 @@ const daysBetween = (a: Date, b: Date) => {
 export async function POST() {
   const secret = process.env.CRON_SECRET;
   if (secret) {
-    const header = headers().get("x-cron-secret");
+    const header = (await headers()).get("x-cron-secret");
     if (header !== secret) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
