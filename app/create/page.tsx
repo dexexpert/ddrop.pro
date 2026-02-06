@@ -59,7 +59,7 @@ export default function CreateDropPage() {
         </div>
 
         {status === "success" ? (
-          <div className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+          <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
             <h2 className="text-2xl font-semibold text-ink">
               Your Drop is active.
             </h2>
@@ -98,7 +98,7 @@ export default function CreateDropPage() {
           <>
             <form
               onSubmit={handleSubmit}
-              className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8"
+              className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8"
             >
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="grid gap-2 text-base font-medium">
@@ -224,8 +224,12 @@ export default function CreateDropPage() {
 
               <button
                 type="submit"
-                className="btn-primary mt-6 w-full rounded-md px-6 py-4 text-base font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-0.5"
+                disabled={status === "progress"}
+                className="btn-primary mt-6 inline-flex w-full items-center justify-center gap-3 rounded-md px-6 py-4 text-base font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
+                {status === "progress" && (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                )}
                 Encrypt &amp; Create
               </button>
             </form>

@@ -17,7 +17,7 @@ export default function SafetyPage() {
           </p>
         </div>
 
-        <section className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <section className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <h2 className="text-lg font-semibold text-ink">What this protects</h2>
           <ul className="mt-4 grid gap-2 text-base text-muted">
             <li>Platform compromise (payload encrypted).</li>
@@ -26,7 +26,7 @@ export default function SafetyPage() {
           </ul>
         </section>
 
-        <section className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <section className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <h2 className="text-lg font-semibold text-ink">What it doesn’t</h2>
           <ul className="mt-4 grid gap-2 text-base text-muted">
             <li>Email compromise.</li>
@@ -36,7 +36,7 @@ export default function SafetyPage() {
           </ul>
         </section>
 
-        <section className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <section className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <h2 className="text-lg font-semibold text-ink">
             How to choose a passphrase
           </h2>
@@ -47,7 +47,7 @@ export default function SafetyPage() {
           </ul>
         </section>
 
-        <section className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <section className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <h2 className="text-lg font-semibold text-ink">
             Operational limits (email-only)
           </h2>

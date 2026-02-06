@@ -28,7 +28,7 @@ export default function AlivePage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-6 py-16">
-      <div className="w-full max-w-md rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8 text-center">
+      <div className="glow-card w-full max-w-md rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8 text-center">
         <h1 className="text-2xl font-semibold text-ink">Check-in</h1>
         <p className="mt-2 text-base text-muted">
           Confirm you’re okay to delay release.

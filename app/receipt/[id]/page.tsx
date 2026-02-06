@@ -44,7 +44,7 @@ export default async function ReceiptPage({
           ← Back to home
         </Link>
 
-        <div className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h1 className="text-2xl font-semibold text-ink">Receipt</h1>
             <span className="rounded-md border border-edge px-3 py-1 text-base font-semibold uppercase tracking-[0.25em] text-muted">

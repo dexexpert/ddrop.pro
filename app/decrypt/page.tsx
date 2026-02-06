@@ -39,7 +39,7 @@ export default function DecryptPage() {
           </p>
         </div>
 
-        <div className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+        <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
           <div className="flex items-center gap-4 text-base font-semibold uppercase tracking-[0.25em] text-muted">
             <button
               type="button"
@@ -101,7 +101,7 @@ export default function DecryptPage() {
         )}
 
         {output && (
-          <div className="rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+          <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
             <p className="text-base uppercase tracking-[0.25em] text-muted">
               Output
             </p>
