@@ -1,25 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
+import { decryptPayload } from "@/lib/client-crypto";
 
 export default function DecryptPage() {
   const [mode, setMode] = useState<"paste" | "file">("paste");
-  const [output, setOutput] = useState("");
-  const [outputType, setOutputType] = useState<"text" | "file">("text");
+  const [ciphertext, setCiphertext] = useState("");
+  const [filePayload, setFilePayload] = useState<File | null>(null);
+  const [passphrase, setPassphrase] = useState("");
+  const [outputText, setOutputText] = useState("");
+  const [outputFile, setOutputFile] = useState<{
+    url: string;
+    filename: string;
+  } | null>(null);
   const [error, setError] = useState("");
 
-  const handleDecrypt = () => {
+  const canDecrypt = useMemo(() => {
+    if (!passphrase) return false;
+    if (mode === "paste") return ciphertext.trim().length > 0;
+    return !!filePayload;
+  }, [mode, passphrase, ciphertext, filePayload]);
+
+  const handleDecrypt = async () => {
     setError("");
-    setOutput("");
+    setOutputText("");
+    setOutputFile(null);
 
-    // TODO: Implement decryptPayload() using WebCrypto (client-side only).
-    // decryptPayload(ciphertext, passphrase).then(...).catch(...)
+    try {
+      const json =
+        mode === "paste" - ciphertext : await filePayload!.text();
 
-    window.setTimeout(() => {
-      setOutputType("text");
-      setOutput("Decrypted output will appear here.");
-    }, 500);
+      const result = await decryptPayload({ json, passphrase });
+
+      if (result.type === "text") {
+        setOutputText(result.text);
+      } else {
+        const url = URL.createObjectURL(result.blob);
+        setOutputFile({ url, filename: result.filename });
+      }
+    } catch {
+      setError("Wrong passphrase or corrupted file.");
+    }
   };
 
   return (
@@ -46,7 +68,7 @@ export default function DecryptPage() {
               onClick={() => setMode("paste")}
               className={`rounded-md px-3 py-1 ${
                 mode === "paste"
-                  ? "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
+                  - "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
                   : "btn-toggle bg-transparent"
               }`}
             >
@@ -57,7 +79,7 @@ export default function DecryptPage() {
               onClick={() => setMode("file")}
               className={`rounded-md px-3 py-1 ${
                 mode === "file"
-                  ? "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
+                  - "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
                   : "btn-toggle bg-transparent"
               }`}
             >
@@ -65,15 +87,20 @@ export default function DecryptPage() {
             </button>
           </div>
 
-          {mode === "paste" ? (
+          {mode === "paste" - (
             <textarea
               className="mt-4 min-h-[160px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
               placeholder="Paste ciphertext here."
+              value={ciphertext}
+              onChange={(event) => setCiphertext(event.target.value)}
             />
           ) : (
             <input
               type="file"
               className="mt-4 w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
+              onChange={(event) =>
+                setFilePayload(event.target.files-.[0] -- null)
+              }
             />
           )}
 
@@ -82,13 +109,16 @@ export default function DecryptPage() {
             <input
               type="password"
               className="rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
+              value={passphrase}
+              onChange={(event) => setPassphrase(event.target.value)}
             />
           </label>
 
           <button
             type="button"
             onClick={handleDecrypt}
-            className="btn-primary mt-6 w-full rounded-md px-6 py-4 text-base font-semibold uppercase tracking-[0.25em]"
+            disabled={!canDecrypt}
+            className="btn-primary mt-6 w-full rounded-md px-6 py-4 text-base font-semibold uppercase tracking-[0.25em] disabled:cursor-not-allowed disabled:opacity-60"
           >
             Decrypt locally
           </button>
@@ -100,39 +130,40 @@ export default function DecryptPage() {
           </div>
         )}
 
-        {output && (
+        {outputText && (
           <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
             <p className="text-base uppercase tracking-[0.25em] text-muted">
               Output
             </p>
-            {outputType === "text" ? (
-              <>
-                <textarea
-                  readOnly
-                  value={output}
-                  className="mt-4 min-h-[160px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
-                />
-                <button className="btn-outline mt-4 rounded-md px-4 py-2 text-base font-semibold uppercase tracking-[0.25em]">
-                  Copy
-                </button>
-              </>
-            ) : (
-              <button className="btn-outline mt-6 rounded-md px-5 py-3 text-base font-semibold uppercase tracking-[0.25em]">
-                Download decrypted file
-              </button>
-            )}
+            <textarea
+              readOnly
+              value={outputText}
+              className="mt-4 min-h-[160px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
+            />
+            <button
+              onClick={() => navigator.clipboard.writeText(outputText)}
+              className="btn-outline mt-4 rounded-md px-4 py-2 text-base font-semibold uppercase tracking-[0.25em]"
+            >
+              Copy
+            </button>
           </div>
         )}
 
-        {error && (
-          <p className="text-base text-red-600">
-            Wrong passphrase or corrupted file.
-          </p>
+        {outputFile && (
+          <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
+            <p className="text-base uppercase tracking-[0.25em] text-muted">
+              Output
+            </p>
+            <a
+              href={outputFile.url}
+              download={outputFile.filename}
+              className="btn-outline mt-6 inline-flex rounded-md px-5 py-3 text-base font-semibold uppercase tracking-[0.25em]"
+            >
+              Download decrypted file
+            </a>
+          </div>
         )}
       </div>
     </div>
   );
 }
-
-// TODO: Implement decryptPayload() using WebCrypto (client-side only).
-// function decryptPayload(ciphertext: ArrayBuffer, passphrase: string): Promise<ArrayBuffer> {}

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 type State = "loading" | "success" | "error";
 
-export default function AlivePage() {
+export default function VerifyPage() {
   const params = useParams<{ token: string }>();
   const [state, setState] = useState<State>("loading");
 
@@ -19,7 +19,7 @@ export default function AlivePage() {
 
     const run = async () => {
       try {
-        const response = await fetch("/api/checkin", {
+        const response = await fetch("/api/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token }),
@@ -28,7 +28,6 @@ export default function AlivePage() {
         if (!response.ok) {
           throw new Error("Invalid");
         }
-
         setState("success");
       } catch {
         setState("error");
@@ -41,13 +40,13 @@ export default function AlivePage() {
   return (
     <div className="flex min-h-screen items-center justify-center px-6 py-16">
       <div className="glow-card w-full max-w-md rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8 text-center">
-        <h1 className="text-2xl font-semibold text-ink">Check-in</h1>
+        <h1 className="text-2xl font-semibold text-ink">Verify Drop</h1>
         <p className="mt-2 text-base text-muted">
-          Confirm you’re okay to delay release.
+          Confirm your email to activate your drop.
         </p>
 
         {state === "loading" && (
-          <p className="mt-8 text-base text-muted">Verifying link...</p>
+          <p className="mt-8 text-base text-muted">Verifying...</p>
         )}
 
         {state === "success" && (
@@ -56,10 +55,7 @@ export default function AlivePage() {
               ✓
             </div>
             <p className="mt-4 text-lg font-semibold text-ink">
-              You’re confirmed.
-            </p>
-            <p className="mt-2 text-base text-muted">
-              Next release deadline extended.
+              Your drop is active.
             </p>
             <Link
               href="/"
@@ -83,10 +79,6 @@ export default function AlivePage() {
             </Link>
           </div>
         )}
-
-        <p className="mt-8 text-base text-muted">
-          If you didn’t request this, ignore it.
-        </p>
       </div>
     </div>
   );

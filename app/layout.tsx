@@ -17,7 +17,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "DEADDROP",
   description:
-    "Upload an encrypted file; if you don’t click ‘I’m alive’ within N days, it’s emailed to your person.",
+    "Upload an encrypted file; if you don't click 'I'm alive' within N days, it's emailed to your person.",
 };
 
 export default function RootLayout({

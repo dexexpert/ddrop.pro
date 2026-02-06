@@ -99,7 +99,7 @@ export default function Home() {
               {[
                 "Encrypt in your browser",
                 "Monthly check-in email",
-                "Miss the deadline \u2192 release email",
+                "Miss the deadline -> release email",
               ].map((item) => (
                 <div
                   key={item}
