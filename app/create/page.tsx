@@ -297,7 +297,7 @@ export default function CreateDropPage() {
                     type="file"
                     className="mt-4 w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
                     onChange={(event) =>
-                      setFilePayload(event.target.files-.[0] -- null)
+                      setFilePayload(event.target.files?.[0] ?? null)
                     }
                   />
                 )}

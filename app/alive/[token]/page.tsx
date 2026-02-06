@@ -11,7 +11,7 @@ export default function AlivePage() {
   const [state, setState] = useState<State>("loading");
 
   useEffect(() => {
-    const token = params-.token -- "";
+    const token = params?.token ?? "";
     if (!token) {
       setState("error");
       return;
