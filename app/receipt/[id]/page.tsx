@@ -9,7 +9,7 @@ type ReceiptRow = {
   created_at: string;
   last_checkin_at: string;
   release_at: string;
-  released_at-: string | null;
+  released_at?: string | null;
   user_email: string;
   recipient_email: string;
 };
