@@ -67,15 +67,14 @@ export default function CreateDropPage() {
 
     try {
       const data =
-        mode === "text"
-          - new TextEncoder().encode(textPayload).buffer
+        mode === "text" ? new TextEncoder().encode(textPayload).buffer
           : await filePayload!.arrayBuffer();
 
       const { json, hashHex } = await encryptPayload({
         data,
         passphrase,
-        filename: filePayload-.name,
-        mimeType: filePayload-.type,
+        filename: filePayload?.name,
+        mimeType: filePayload?.type,
         isText: mode === "text",
       });
 
@@ -102,7 +101,7 @@ export default function CreateDropPage() {
       setReceiptLink(result.receipt_url);
       setStatus("success");
     } catch (err) {
-      setError(err instanceof Error - err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("idle");
     }
   };
@@ -123,7 +122,7 @@ export default function CreateDropPage() {
           </p>
         </div>
 
-        {status === "success" - (
+        {status === "success" ? (
           <div className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-8">
             <h2 className="text-2xl font-semibold text-ink">
               Your Drop is active.
@@ -266,8 +265,7 @@ export default function CreateDropPage() {
                     type="button"
                     onClick={() => setMode("text")}
                     className={`rounded-md px-3 py-1 ${
-                      mode === "text"
-                        - "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
+                      mode === "text" ? "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
                         : "btn-toggle bg-transparent"
                     }`}
                   >
@@ -278,14 +276,14 @@ export default function CreateDropPage() {
                     onClick={() => setMode("file")}
                     className={`rounded-md px-3 py-1 ${
                       mode === "file"
-                        - "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
+                        ? "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
                         : "btn-toggle bg-transparent"
                     }`}
                   >
                     File
                   </button>
                 </div>
-                {mode === "text" - (
+                {mode === "text" ? (
                   <textarea
                     className="mt-4 min-h-[140px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
                     placeholder="Paste instructions, keys, or any text payload."

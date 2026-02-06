@@ -29,7 +29,7 @@ export default function DecryptPage() {
 
     try {
       const json =
-        mode === "paste" - ciphertext : await filePayload!.text();
+        mode === "paste" ? ciphertext : await filePayload!.text();
 
       const result = await decryptPayload({ json, passphrase });
 
@@ -67,8 +67,7 @@ export default function DecryptPage() {
               type="button"
               onClick={() => setMode("paste")}
               className={`rounded-md px-3 py-1 ${
-                mode === "paste"
-                  - "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
+                mode === "paste" ? "btn-toggle-active ring-2 ring-[rgba(0,204,193,0.45)]"
                   : "btn-toggle bg-transparent"
               }`}
             >
@@ -78,8 +77,7 @@ export default function DecryptPage() {
               type="button"
               onClick={() => setMode("file")}
               className={`rounded-md px-3 py-1 ${
-                mode === "file"
-                  - "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
+                mode === "file" ? "btn-toggle-active ring-2 ring-[rgba(139,88,255,0.45)]"
                   : "btn-toggle bg-transparent"
               }`}
             >
@@ -87,7 +85,7 @@ export default function DecryptPage() {
             </button>
           </div>
 
-          {mode === "paste" - (
+          {mode === "paste" ? (
             <textarea
               className="mt-4 min-h-[160px] w-full rounded-md border border-edge bg-[rgba(14,16,21,0.9)] px-4 py-3 text-base"
               placeholder="Paste ciphertext here."

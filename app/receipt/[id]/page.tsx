@@ -20,8 +20,8 @@ const maskEmail = (value: string) => {
   return `${name.slice(0, 1)}***@${domain}`;
 };
 
-const formatDate = (value-: string | null) => {
-  if (!value) return "—";
+const formatDate = (value?: string | null) => {
+  if (!value) return "-";
   return new Date(value).toLocaleString("en-US", {
     month: "short",
     day: "numeric",
