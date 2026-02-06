@@ -21,7 +21,7 @@ const fromBase64 = (value: string) => {
   return bytes;
 };
 
-const deriveKey = async (passphrase: string, salt: Uint8Array) => {
+const deriveKey = async (passphrase: string, salt: ArrayBuffer) => {
   const keyMaterial = await crypto.subtle.importKey(
     "raw",
     textEncoder.encode(passphrase),
@@ -33,7 +33,7 @@ const deriveKey = async (passphrase: string, salt: Uint8Array) => {
   return crypto.subtle.deriveKey(
     {
       name: "PBKDF2",
-      salt: salt.buffer,
+      salt,
       iterations: 120000,
       hash: "SHA-256",
     },
@@ -53,7 +53,8 @@ export const encryptPayload = async (options: {
 }) => {
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const key = await deriveKey(options.passphrase, salt);
+  const saltBuffer = new Uint8Array(salt).buffer as ArrayBuffer;
+  const key = await deriveKey(options.passphrase, saltBuffer);
   const ciphertext = await crypto.subtle.encrypt(
     { name: "AES-GCM", iv },
     key,
@@ -98,7 +99,8 @@ export const decryptPayload = async (options: {
   const salt = fromBase64(payload.salt);
   const iv = fromBase64(payload.iv);
   const ciphertext = fromBase64(payload.ciphertext);
-  const key = await deriveKey(options.passphrase, salt);
+  const saltBuffer = new Uint8Array(salt).buffer as ArrayBuffer;
+  const key = await deriveKey(options.passphrase, saltBuffer);
 
   const decrypted = await crypto.subtle.decrypt(
     { name: "AES-GCM", iv },
