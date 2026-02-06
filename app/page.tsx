@@ -21,7 +21,12 @@ export default function Home() {
         </nav>
 
         <div className="flex items-center justify-center gap-3">
-          <Image src="/logo2.png" alt="DeadDrop logo" width={96} height={96} />
+          <Image
+            src="/logo2.png"
+            alt="DeadDrop logo"
+            width={96}
+            height={96}
+          />
           <span className="text-2xl font-semibold uppercase tracking-[0.25em]">
             DEADDROP
           </span>
@@ -29,19 +34,7 @@ export default function Home() {
 
         <div className="hidden items-center justify-end gap-1 md:flex">
           <a
-            href="https://dexscreener.com"
-            aria-label="Dexscreener"
-            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
-          >
-            <Image
-              src="/dexscreener.png"
-              alt="Dexscreener"
-              width={22}
-              height={22}
-            />
-          </a>
-          <a
-            href="https://x.com"
+            href="https://x.com/Ddrop_e"
             aria-label="X"
             className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
           >
@@ -61,23 +54,23 @@ export default function Home() {
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-16">
         <section className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <div className="flex max-w-xl flex-col gap-6">
-            <p className="text-base font-semibold uppercase tracking-[0.35em] text-muted">
+            <p className="fade-up breathe text-base font-semibold uppercase tracking-[0.35em] text-muted">
               Dead-simple dead drop
             </p>
-            <h1 className="text-5xl leading-[1.02] text-ink md:text-6xl">
+            <h1 className="fade-up-2 text-5xl leading-[1.02] text-ink md:text-6xl">
               If you disappear,
               <br />
-              your <span className="glow-text">instructions</span> don't.
+              your <span className="glow-text glow-soft">instructions</span> don't.
             </h1>
-            <p className="text-xl leading-8 text-muted">
+            <p className="fade-up-3 text-xl leading-8 text-muted">
               Upload an encrypted file. If you don't click{" "}
               <span className="glow-text">"I'm alive"</span> within N days,
-              it’s emailed to your person.
+              it's emailed to your person.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/create"
-                className="btn-primary rounded-md px-6 py-3 text-base font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,204,193,0.5)]"
+                className="btn-primary cta-pulse rounded-md px-6 py-3 text-base font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,204,193,0.5)]"
               >
                 Create a Drop
               </Link>
@@ -90,7 +83,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="glow-card rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-6">
+          <aside className="glow-card border-sweep rounded-lg border border-edge bg-[rgba(18,20,26,0.78)] p-6">
             <div className="flex items-center justify-between text-base font-semibold uppercase tracking-[0.35em] text-muted">
               <span>Flow</span>
               <span>Binary</span>
@@ -175,19 +168,7 @@ export default function Home() {
         <span>Client-side encryption. No on-chain storage. No trading.</span>
         <div className="flex items-center gap-1">
           <a
-            href="https://dexscreener.com"
-            aria-label="Dexscreener"
-            className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
-          >
-            <Image
-              src="/dexscreener.png"
-              alt="Dexscreener"
-              width={22}
-              height={22}
-            />
-          </a>
-          <a
-            href="https://x.com"
+            href="https://x.com/Ddrop_e"
             aria-label="X"
             className="btn-outline inline-flex items-center justify-center rounded-md px-2 py-2 transition"
           >
