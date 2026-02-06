@@ -335,9 +335,9 @@ export default function CreateDropPage() {
                   Processing
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3 text-base font-medium text-ink">
-                  <span>Encrypting -></span>
-                  <span>Uploading -></span>
-                  <span>Saving -></span>
+                  <span>Encrypting -&gt;</span>
+                  <span>Uploading -&gt;</span>
+                  <span>Saving -&gt;</span>
                   <span>Done</span>
                 </div>
               </div>
